@@ -1,0 +1,25 @@
+<!--  expression interpolation -->
+<h1>{{ title }} {{ 'v' + appInfos?.version }}</h1>
+<h2 *ngIf="appInfos && appInfos.theme">Theme: <span [class.theme-active]="isStarted">{{appInfos.theme}}</span></h2>
+<div>
+  <!-- template reference variable-->
+  state: <span #state
+        [innerText]="'game not started'"></span>
+</div>
+<!-- {{ 'v' + appInfos.version++ }} warning, it's not React !-->
+<div *ngIf="!isStarted">
+  name: <input [(ngModel)]="user" /><br />
+  <!-- name:<input [value]="user"
+         (input)="user = $event.target.value"><br /> -->
+  <!-- name: <input [ngModel]="user"
+         (ngModelChange)="user = $event"><br /> -->
+  <button (click)="startGame(); state.innerText ='game is running';"
+          [disabled]="!user"
+          [attr.aria-label]="appInfos?.theme"
+          title="{{appInfos?.theme}}">Start game as {{ user }}</button>
+</div>
+<div *ngIf="isStarted">
+  Game has begin with player {{ user}}<br />
+  <button [style.backgroundColor]="'red'"
+          (click)="endGame(); state.innerText ='game ended';">Stop game</button>
+</div>
