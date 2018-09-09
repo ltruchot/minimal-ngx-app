@@ -1,1 +1,1 @@
-# basic-ng-app
+# minimal-ng-app
