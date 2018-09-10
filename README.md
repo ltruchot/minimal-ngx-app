@@ -1,1 +1,1 @@
-# minimal-ng-app
+# minimal-ngx-app
